@@ -57,7 +57,8 @@ public class HomePage extends BasePage{
         anywhereBtn.click();
     }
 
-    public void clickOnAddGuests() {
+    public void clickOnAddGuests() throws InterruptedException {
+        Thread.sleep(300);
         addGuestsBtn.click();
 
     }

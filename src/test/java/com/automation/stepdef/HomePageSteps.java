@@ -33,7 +33,7 @@ public class HomePageSteps {
 
 
     @When("user clicks on add guests button")
-    public void userClicksOnAddGuestsButton() {
+    public void userClicksOnAddGuestsButton() throws InterruptedException {
         homePage.clickOnAddGuests();
 
     }
@@ -52,7 +52,6 @@ public class HomePageSteps {
     public void userClickOnSearchButton() throws InterruptedException {
         homePage.userClicksOnSearchBtn();
     }
-
     @When("user closes the pop up")
     public void userClosesThePopUp() {
         homePage.closePopupMessage();
