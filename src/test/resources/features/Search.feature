@@ -21,5 +21,5 @@ Feature: This feature allows to test Search functionality
     And user click on search button
     Then verify search results for two guests are displayed
 
-    Scenario: Verify user can select dates in calendar functionality
+    Scenario: Verify user can select dates in Calendar functionality
 
