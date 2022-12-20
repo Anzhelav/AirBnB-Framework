@@ -66,4 +66,9 @@ public class HomePageSteps {
     public void verifyLakefrontOptionsAreDisplayed() {
         homePage.verifyLakefrontOptionsAreDisplayed();
     }
+
+    @When("user clicks on airbnb your home button")
+    public void userClicksOnAirbnbYourHomeButton() {
+        homePage.clickOnAirbnbYourHomeBtn();
+    }
 }
