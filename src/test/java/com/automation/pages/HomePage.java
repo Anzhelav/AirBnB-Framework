@@ -36,6 +36,12 @@ public class HomePage extends BasePage{
     @FindBy(xpath="/html/body/div[10]/section/div/div/div[2]/div/div[1]/button")
     WebElement closePopupM;
 
+    @FindBy(xpath="//span[text() = 'Lakefront']")
+    WebElement lakefrontIcon;
+
+    @FindBy(xpath="//a[@rel = 'noopener noreferrer nofollow'][1]")
+    WebElement lakefrontOption;
+
     public void openWebsite() {
         driver.get(ConfigReader.getProperty("app.baseurl"));
     }
@@ -90,5 +96,13 @@ public class HomePage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(closePopupM));
         closePopupM.click();
+    }
+
+    public void clickOnLakefrontIcon() {
+        lakefrontIcon.click();
+    }
+
+    public void verifyLakefrontOptionsAreDisplayed() {
+        Assert.assertTrue("Lakefront option is not displayed", lakefrontOption.isDisplayed());
     }
 }

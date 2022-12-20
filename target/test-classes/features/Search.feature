@@ -21,5 +21,6 @@ Feature: This feature allows to test Search functionality
     And user click on search button
     Then verify search results for two guests are displayed
 
-    Scenario: Verify user can select dates in Calendar functionality
-
+    Scenario: Verify user can select lakefront icon
+      When user clicks on lakefront icon
+      Then verify lakefront options are displayed
