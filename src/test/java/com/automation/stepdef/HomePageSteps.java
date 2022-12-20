@@ -56,4 +56,14 @@ public class HomePageSteps {
     public void userClosesThePopUp() {
         homePage.closePopupMessage();
     }
+
+    @When("user clicks on lakefront icon")
+    public void userClicksOnLakefrontIcon() {
+        homePage.clickOnLakefrontIcon();
+    }
+
+    @Then("verify lakefront options are displayed")
+    public void verifyLakefrontOptionsAreDisplayed() {
+        homePage.verifyLakefrontOptionsAreDisplayed();
+    }
 }
