@@ -42,6 +42,9 @@ public class HomePage extends BasePage{
     @FindBy(xpath="//a[@rel = 'noopener noreferrer nofollow'][1]")
     WebElement lakefrontOption;
 
+    @FindBy(xpath="//div[text() = 'Airbnb your home']")
+    WebElement airbnbYourHomeBtn;
+
     public void openWebsite() {
         driver.get(ConfigReader.getProperty("app.baseurl"));
     }
@@ -104,5 +107,9 @@ public class HomePage extends BasePage{
 
     public void verifyLakefrontOptionsAreDisplayed() {
         Assert.assertTrue("Lakefront option is not displayed", lakefrontOption.isDisplayed());
+    }
+
+    public void clickOnAirbnbYourHomeBtn() {
+        airbnbYourHomeBtn.click();
     }
 }
