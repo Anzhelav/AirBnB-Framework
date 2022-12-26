@@ -1,115 +1,142 @@
 package com.automation.pages;
 
-import com.automation.utils.ConfigReader;
-import org.junit.Assert;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
 public class HomePage extends BasePage{
-   // @FindBy (xpath = "//div[@class = 's1qcpybl dir dir-ltr']")
-    @FindBy (xpath="//div[text()='Anywhere']")
-    WebElement anywhereBtn;
+    @FindBy(xpath="(//span[@aria-label='Holiday'])[1]")
+    WebElement holidayDropDownMenu;
 
-    @FindBy (xpath="//input[@class = 'ivycze5 dir dir-ltr']")
-    WebElement whereField;
+    @FindBy()
+    WebElement christmasCardOption;
 
-    @FindBy(xpath="//span[@class = '_kaq6tx']")
-    WebElement searchBtn;
+    @FindBy(xpath ="//a[text()='SHOP CARDS']")
+    WebElement shopCardsBtn;
 
-    @FindBy (xpath = "//a[@rel = 'noopener noreferrer nofollow']")
-    WebElement searchResult;
+    @FindBy(xpath="//img[contains(@alt,'memorable')]")
+    WebElement makeItMemorableBanner;
 
-    @FindBy (xpath = "(//div[text() = 'Add guests'])[1]")
-    WebElement addGuestsBtn;
+    @FindBy (xpath="//img[@alt='Close']")
+    WebElement newUserPopUp;
 
-    @FindBy (xpath="//button[@data-testid='stepper-adults-increase-button']")
-    WebElement plusGuestsBtn;
+    @FindBy(xpath="//a[contains(@data-linkname,'HOMEOFFICE')]")
+    WebElement homeOfficeOption;
 
-    @FindBy(xpath = "//div[text()='2 guests']")
-    WebElement numberOfGuests;
+    @FindBy(xpath="//img[@alt = 'Personalized note pads']")
+    WebElement notePadIcon;
 
-    @FindBy(xpath="/html/body/div[10]/section/div/div/div[2]/div/div[1]/button")
-    WebElement closePopupM;
+    @FindBy(xpath = "//img[@alt='Take Note']")
+    WebElement firstItemNotepad;
 
-    @FindBy(xpath="//span[text() = 'Lakefront']")
-    WebElement lakefrontIcon;
+    @FindBy(xpath="//a[@class='uig-button uig-primary-button personalize-button']")
+    WebElement personalizeBtn;
 
-    @FindBy(xpath="//a[@rel = 'noopener noreferrer nofollow'][1]")
-    WebElement lakefrontOption;
+    @FindBy(id="stringField-full_name")
+    WebElement inputNotepadNameField;
 
-    @FindBy(xpath="//div[text() = 'Airbnb your home']")
-    WebElement airbnbYourHomeBtn;
+    @FindBy(id="personalizeFormModalButton1")
+    WebElement doneBtn;
 
-    public void openWebsite() {
-        driver.get(ConfigReader.getProperty("app.baseurl"));
+    @FindBy(id="addToCartLink")
+    WebElement addToCartBtn;
+
+    @FindBy(id="warning0")
+    WebElement poUpEmptyNotepadMessage;
+
+    @FindBy(xpath="//img[@alt = 'Create Your Own']")
+    WebElement createYourOwnCategory;
+
+    @FindBy(xpath = "//a[@data-linkname = 'product:choosestyle|personalize']")
+    WebElement personalizeButton;
+
+    @FindBy(xpath = "//a[contains(text(), 'LET’S GO')]")
+    WebElement letsGoBtn;
+
+    @FindBy(xpath = "//button[contains(text(), 'CONTINUE')]")
+    WebElement continueBtn;
+
+    @FindBy(xpath = " //img[contains(@alt, 'Photo books')]")
+    WebElement clickOnTurnYourMemoriesIntoPhotoBooksLink;
+
+
+
+
+
+    public void clickOnChristmasCardOptionFromHolidayDropdown() {
+        Actions action = new Actions(driver);
+        action.moveToElement(holidayDropDownMenu).moveToElement(christmasCardOption).click(christmasCardOption);
     }
 
-    public void clickOnSearchBtn() {
-        searchBtn.click();
+
+    public void clickOnShopCardsBtn() {
+        shopCardsBtn.click();
     }
 
-    public void inputWhereField(String where) {
-        whereField.sendKeys(where+ Keys.ENTER);
-
+    public void verifyCardsStationerySectionIsDisplayed(){
+        Assert.assertTrue(makeItMemorableBanner.isDisplayed(),"not displayed");
     }
 
-    public void verifySearchResults() {
-        Assert.assertTrue("results are not displayed", searchResult.isDisplayed());
-    }
-
-    public void clickOnSearchIcon() {
-        anywhereBtn.click();
-    }
-
-    public void clickOnAddGuests() throws InterruptedException {
-        Thread.sleep(300);
-        addGuestsBtn.click();
-
-    }
-
-    public void clickOnPlusBtn() {
+    public void closePopUp() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(plusGuestsBtn));
-
-            for(int i=1;i<=2;i++){
-                plusGuestsBtn.click();
-            }
-
+        wait.until(ExpectedConditions.visibilityOf(newUserPopUp));
+        newUserPopUp.click();
     }
 
-    public void verifySearchResultsForNumberOfGuestsAreDisplayed() throws InterruptedException {
-        Thread.sleep(300);
-        Assert.assertTrue("search for guests is not correct", numberOfGuests.isDisplayed());
-
-
+    public void clickOnHomeOfficeOption() {
+        homeOfficeOption.click();
     }
 
-    public void userClicksOnSearchBtn() throws InterruptedException {
-        Thread.sleep(300);
-        searchBtn.click();
-
+    public void clickOnNotepadsIcon() {
+        notePadIcon.click();
     }
 
-    public void closePopupMessage() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(closePopupM));
-        closePopupM.click();
+    public void clickOnFirstItem() {
+        firstItemNotepad.click();
     }
 
-    public void clickOnLakefrontIcon() {
-        lakefrontIcon.click();
+    public void clickOnPersonalizeBtn() {
+        personalizeButton.click();
     }
 
-    public void verifyLakefrontOptionsAreDisplayed() {
-        Assert.assertTrue("Lakefront option is not displayed", lakefrontOption.isDisplayed());
+    public void enterNameOfPersonalizedNotepad() {
+        inputNotepadNameField.sendKeys("A");
     }
 
-    public void clickOnAirbnbYourHomeBtn() {
-        airbnbYourHomeBtn.click();
+    public void clickOnDoneBtn() {
+        doneBtn.click();
+    }
+
+    public void pressOnAddToCartBtn() {
+        addToCartBtn.click();
+    }
+
+    public void verifyPopUpEmptyNotepadMessageDisplayed() {
+        Assert.assertTrue(poUpEmptyNotepadMessage.isDisplayed(),"Empty notepad message is not displayed");
+    }
+
+    public void clickOnCreateYourOwnCategory() {
+        createYourOwnCategory.click();
+    }
+
+    public void clickOnPersonalizeButton() {
+        personalizeButton.click();
+    }
+
+    public void clickOnLetsGoBtn() {
+        letsGoBtn.click();
+    }
+
+    public void clickOnContinueBtn() {
+        continueBtn.click();
+    }
+
+    public void clickOnTurnYourMemoriesIntoPhotoBooksOption() {
+        clickOnTurnYourMemoriesIntoPhotoBooksLink.click();
     }
 }

@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="SauceDemoFramework" />
         <module name="AirBnBFramework" />
+        <module name="FrameworkShutterfly" />
       </profile>
     </annotationProcessing>
   </component>
