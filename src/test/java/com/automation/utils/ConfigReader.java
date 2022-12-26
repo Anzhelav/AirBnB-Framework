@@ -5,7 +5,6 @@ import java.util.Properties;
 
 public class ConfigReader {
     static Properties prop;
-
     public static void initProperties() {
         try {
             FileReader fr = new FileReader("src/test/resources/data/configdata.properties");
@@ -15,8 +14,8 @@ public class ConfigReader {
             e.printStackTrace();
         }
     }
-
-    public static String getProperty(String key) {
+    public static String getProperty(String key){
         return prop.getProperty(key);
+
     }
 }
